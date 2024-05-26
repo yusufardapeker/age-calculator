@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+		<link rel="stylesheet" href="./styles/reset.css" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="./styles/style.css" />
+
+		<title>Age calculator app</title>
+	</head>
+	<body>
+		<div id="age-calculator">
+			<form>
+				<div class="day-input-wrapper">
+					<label for="day">Day</label>
+					<input name="day" id="day" type="number" placeholder="DD" />
+					<span class="error-message"></span>
+				</div>
+
+				<div class="month-input-wrapper">
+					<label for="month">Month</label>
+					<input name="month" id="month" type="number" placeholder="MM" />
+					<span class="error-message"></span>
+				</div>
+
+				<div class="year-input-wrapper">
+					<label for="year">Year</label>
+					<input name="year" id="year" type="number" placeholder="YYYY" />
+					<span class="error-message"></span>
+				</div>
+
+				<img src="./assets/images/icon-arrow.svg" class="arrow-icon" />
+			</form>
+
+			<div id="result">
+				<p class="result-year"><span class="year-value">-- </span> years</p>
+				<p class="result-month"><span class="month-value">-- </span> months</p>
+				<p class="result-day"><span class="day-value">-- </span> days</p>
+			</div>
+		</div>
+
+		<script src="./script.js"></script>
+	</body>
+</html>

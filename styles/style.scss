@@ -1,0 +1,170 @@
+// Colors
+$purple: hsl(259, 100%, 65%);
+$light-red: hsl(0, 100%, 67%);
+
+$white: hsl(0, 0%, 100%);
+$off-white: hsl(0, 0%, 94%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+body {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	background-color: $off-white;
+}
+
+#age-calculator {
+	max-width: 780px;
+	width: 92%;
+	margin: 76px auto;
+	background-color: $white;
+	padding: 24px;
+	border-radius: 20px 20px 104px 20px;
+
+	form {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 64px;
+		border-bottom: 2px solid $off-white;
+		position: relative;
+
+		[class*="-input-wrapper"] {
+			display: flex;
+			flex-direction: column;
+			width: 88px;
+
+			label {
+				color: $smokey-grey;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 12px;
+				margin-bottom: 4px;
+			}
+
+			@mixin input-text {
+				font-family: inherit;
+				font-weight: 700;
+				font-size: 20px;
+			}
+
+			input {
+				border: 2px solid $off-white;
+				padding: 8px 12px;
+				border-radius: 8px;
+				@include input-text;
+				color: $off-black;
+
+				&::placeholder {
+					@include input-text;
+					color: $smokey-grey;
+				}
+
+				&:focus {
+					border: 2px solid $purple;
+				}
+			}
+
+			.error-message {
+				margin-top: 4px;
+			}
+
+			&.error {
+				label {
+					color: $light-red;
+				}
+
+				input {
+					border-color: $light-red;
+				}
+
+				.error-message {
+					color: $light-red;
+					font-style: italic;
+					font-weight: 400;
+					font-size: 14px;
+				}
+			}
+		}
+		.arrow-icon {
+			padding: 16px;
+			border-radius: 50%;
+			background-color: $purple;
+			width: 56px;
+			position: absolute;
+			bottom: -24px;
+			left: 50%;
+			transform: translateX(-50%);
+			cursor: pointer;
+			transition: all 200ms;
+
+			&:hover {
+				background-color: $off-black;
+			}
+		}
+	}
+
+	#result {
+		padding-top: 52px;
+		padding-bottom: 24px;
+		font-size: 32px;
+		font-weight: 800;
+		font-style: italic;
+
+		[class*="result-"] {
+			[class*="-value"] {
+				color: $purple;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+	#age-calculator {
+		padding: 48px;
+
+		form {
+			justify-content: flex-start;
+			gap: 24px;
+
+			[class*="-input-wrapper"] {
+				width: 160px;
+
+				label {
+					font-size: 14px;
+				}
+
+				@mixin input-text {
+					font-size: 28px;
+				}
+
+				input {
+					padding: 12px 20px;
+					@include input-text;
+
+					&::placeholder {
+						@include input-text;
+					}
+				}
+			}
+
+			.arrow-icon {
+				padding: 20px;
+				width: 76px;
+				bottom: -36px;
+				left: 96%;
+			}
+		}
+
+		#result {
+			font-size: 52px;
+		}
+	}
+}
