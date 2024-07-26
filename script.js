@@ -72,14 +72,8 @@ const calculateAge = () => {
 
 const inputs = [dayInput, monthInput, yearInput];
 
-const dayWrapper = inputsWrapper[0];
-const dayErrorMsg = errorElements[0];
-
-const monthWrapper = inputsWrapper[1];
-const monthErrorMsg = errorElements[1];
-
-const yearWrapper = inputsWrapper[2];
-const yearErrorMsg = errorElements[2];
+const [dayWrapper, monthWrapper, yearWrapper] = inputsWrapper;
+const [dayErrorMsg, monthErrorMsg, yearErrorMsg] = errorElements;
 
 const validaton = () => {
 	inputs.forEach((input, index, array) => {
@@ -127,8 +121,6 @@ const validaton = () => {
 			yearErrorMsg.textContent = "";
 		}
 	});
-
-	// return true;
 };
 
 button.addEventListener("click", () => {
