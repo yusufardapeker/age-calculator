@@ -92,10 +92,21 @@ body {
   font-weight: 800;
   font-style: italic;
 }
+#age-calculator #result .celebrate {
+  display: none;
+}
 #age-calculator #result [class*=result-] [class*=-value] {
   color: hsl(259, 100%, 65%);
 }
 
+@keyframes partyTime {
+  0% {
+    color: hsl(0, 0%, 8%);
+  }
+  100% {
+    color: hsl(259, 100%, 65%);
+  }
+}
 @media only screen and (min-width: 1440px) {
   body {
     display: flex;

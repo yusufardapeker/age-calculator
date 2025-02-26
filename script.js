@@ -5,15 +5,16 @@ const yearInput = document.querySelector("input#year");
 const inputsWrapper = document.querySelectorAll('[class*="-input-wrapper"]');
 const errorElements = document.querySelectorAll(".error-message");
 
+const resultElement = document.querySelector("#result");
 const displayYear = document.querySelector("span.year-value");
 const displayMonth = document.querySelector("span.month-value");
 const displayDay = document.querySelector("span.day-value");
 
 const button = document.querySelector(".arrow-icon");
 
-let dayInputValue = 0;
-let monthInputValue = 0;
-let yearInputValue = 0;
+let dayInputValue;
+let monthInputValue;
+let yearInputValue;
 
 dayInput.addEventListener("input", (e) => {
 	dayInputValue = e.target.value;
@@ -43,96 +44,103 @@ const calculateAge = () => {
 	let dobMonth = dob.getMonth();
 	let dobDay = dob.getDate();
 
-	let yearAge = currentYear - dobYear;
-	let monthAge = currentMonth - dobMonth;
-	let dayAge = currentDay - dobDay;
+	let year = currentYear - dobYear;
+	let month = currentMonth - dobMonth;
+	let day = currentDay - dobDay;
 
 	if (dobMonth >= currentMonth) {
-		yearAge--;
-		monthAge = 12 + currentMonth - dobMonth;
+		year--;
+		month = 12 + currentMonth - dobMonth;
 	}
 
 	if (dobDay >= currentDay) {
-		monthAge--;
-		dayAge = 31 + currentDay - dobDay;
+		month--;
+		age = 31 + currentDay - dobDay;
 	}
 
-	if (monthAge < 0) {
-		monthAge = 11;
-		yearAge--;
-	} else if (monthAge === 12) {
-		monthAge = 0;
-		yearAge++;
+	if (month < 0) {
+		month = 11;
+		year--;
+	} else if (month === 12) {
+		month = 0;
+		year++;
 	}
 
-	displayYear.textContent = yearAge;
-	displayMonth.textContent = monthAge;
-	displayDay.textContent = dayAge;
+	return { year, month, day, dob };
 };
 
-const inputs = [dayInput, monthInput, yearInput];
+const displayResult = () => {
+	const { year, month, day, dob } = calculateAge();
+
+	const dobDate = dob.toString().split(" ").splice(0, 4);
+	const today = now.toString().split(" ").splice(0, 4);
+
+	const isPartyTime = dobDate.every((date, index) => date === today[index]);
+
+	if (isPartyTime) {
+		resultElement.textContent = "Party Time!";
+		resultElement.style.animation = "partyTime 2s ease-in infinite alternate";
+	} else {
+		displayYear.textContent = year;
+		displayMonth.textContent = month;
+		displayDay.textContent = day;
+	}
+};
 
 const [dayWrapper, monthWrapper, yearWrapper] = inputsWrapper;
 const [dayErrorMsg, monthErrorMsg, yearErrorMsg] = errorElements;
 
 const validaton = () => {
-	inputs.forEach((input, index, array) => {
-		let day = array[0];
-		let month = array[1];
-		let year = array[2];
+	if (dayInput.value === "") {
+		dayWrapper.classList.add("error");
+		dayErrorMsg.textContent = "This field is required";
+	} else if (dayInput.value.length === 2 && +dayInput.value > 0 && +dayInput.value <= 31) {
+		dayWrapper.classList.remove("error");
+		dayErrorMsg.textContent = "";
+	} else {
+		dayWrapper.classList.add("error");
+		dayErrorMsg.textContent = "Must be a valid day";
+	}
 
-		if (input.value === "") {
-			inputsWrapper[index].classList.add("error");
-			errorElements[index].textContent = "This field is required";
-		}
-		if (day.value === "") {
-			dayWrapper.classList.add("error");
-			dayErrorMsg.textContent = "This field is required";
-		} else if (day.value.length === 2 && +day.value > 0 && +day.value <= 31) {
-			dayWrapper.classList.remove("error");
-			dayErrorMsg.textContent = "";
-		} else {
-			dayWrapper.classList.add("error");
-			dayErrorMsg.textContent = "Must be a valid day";
-		}
+	if (monthInput.value === "") {
+		monthWrapper.classList.add("error");
+		monthErrorMsg.textContent = "This field is required";
+	} else if (monthInput.value.length === 2 && +monthInput.value > 0 && +monthInput.value <= 12) {
+		monthWrapper.classList.remove("error");
+		monthErrorMsg.textContent = "";
+	} else {
+		monthWrapper.classList.add("error");
+		monthErrorMsg.textContent = "Must be a valid month";
+	}
 
-		if (month.value === "") {
-			monthWrapper.classList.add("error");
-			monthErrorMsg.textContent = "This field is required";
-		} else if (month.value.length === 2 && +month.value > 0 && +month.value <= 12) {
-			monthWrapper.classList.remove("error");
-			monthErrorMsg.textContent = "";
-		} else {
-			monthWrapper.classList.add("error");
-			monthErrorMsg.textContent = "Must be a valid month";
-		}
-
-		if (year.value === "") {
-			yearWrapper.classList.add("error");
-			yearErrorMsg.textContent = "This field is required";
-		} else if (year.value.length !== 4 || +year.value < 0) {
-			yearWrapper.classList.add("error");
-			yearErrorMsg.textContent = "Must be a valid year";
-		} else if (+year.value > currentYear) {
-			yearWrapper.classList.add("error");
-			yearErrorMsg.textContent = "Must be in the past";
-		} else {
-			yearWrapper.classList.remove("error");
-			yearErrorMsg.textContent = "";
-		}
-	});
+	if (yearInput.value === "") {
+		yearWrapper.classList.add("error");
+		yearErrorMsg.textContent = "This field is required";
+	} else if (yearInput.value.length !== 4 || +yearInput.value < 0) {
+		yearWrapper.classList.add("error");
+		yearErrorMsg.textContent = "Must be a valid year";
+	} else if (+yearInput.value > currentYear) {
+		yearWrapper.classList.add("error");
+		yearErrorMsg.textContent = "Must be in the past";
+	} else {
+		yearWrapper.classList.remove("error");
+		yearErrorMsg.textContent = "";
+	}
 };
 
 button.addEventListener("click", () => {
 	validaton();
 
-	inputsWrapper.forEach((wrapperEl, index, array) => {
-		if (
-			!array[0].classList.value.includes("error") &&
-			!array[1].classList.value.includes("error") &&
-			!array[2].classList.value.includes("error")
-		) {
-			calculateAge();
+	let hasError = false;
+
+	inputsWrapper.forEach((wrapperEl) => {
+		if (wrapperEl.classList.value.includes("error")) {
+			hasError = true;
 		}
 	});
+
+	if (!hasError) {
+		calculateAge();
+		displayResult();
+	}
 });

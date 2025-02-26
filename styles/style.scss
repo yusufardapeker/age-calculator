@@ -111,11 +111,25 @@ body {
 		font-weight: 800;
 		font-style: italic;
 
+		.celebrate {
+			display: none;
+		}
+
 		[class*="result-"] {
 			[class*="-value"] {
 				color: $purple;
 			}
 		}
+	}
+}
+
+@keyframes partyTime {
+	0% {
+		color: $off-black;
+	}
+
+	100% {
+		color: $purple;
 	}
 }
 
