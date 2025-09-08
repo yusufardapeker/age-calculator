@@ -7,3 +7,13 @@ $off-white: hsl(0, 0%, 94%);
 $light-grey: hsl(0, 0%, 86%);
 $smokey-grey: hsl(0, 1%, 44%);
 $off-black: hsl(0, 0%, 8%);
+
+// Font Weights
+$fw-m: 400;
+$fw-l: 700;
+$fw-xl: 800;
+
+body {
+	font-family: "Poppins", sans-serif;
+	font-weight: $fw-l;
+}
