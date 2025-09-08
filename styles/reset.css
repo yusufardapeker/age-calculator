@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+}
+
+a,
+a:link,
+a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+button {
+	cursor: pointer;
+	background-color: transparent;
+	font: inherit;
+	color: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
