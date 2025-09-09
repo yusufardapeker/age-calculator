@@ -14,6 +14,38 @@
 		<title>Age Calculator</title>
 	</head>
 	<body>
-		<h1>Hello!</h1>
+		<div class="container">
+			<div class="age-calculator">
+				<form>
+					<div class="inputs-wrapper">
+						<div class="input-wrapper">
+							<label for="day">Day</label>
+							<input name="day" id="day" type="number" placeholder="DD" />
+							<p class="error-message">This field is required</p>
+						</div>
+
+						<div class="input-wrapper">
+							<label for="month">Month</label>
+							<input name="month" id="month" type="number" placeholder="MM" />
+							<p class="error-message">This field is required</p>
+						</div>
+
+						<div class="input-wrapper">
+							<label for="year">Year</label>
+							<input name="year" id="year" type="number" placeholder="YYYY" />
+							<p class="error-message">This field is required</p>
+						</div>
+					</div>
+
+					<img src="./images/icon-arrow.svg" alt="arrow icon" class="arrow-icon" />
+				</form>
+
+				<div class="results">
+					<p class="result"><span class="value">-- </span> years</p>
+					<p class="result"><span class="value">-- </span> months</p>
+					<p class="result"><span class="value">-- </span> days</p>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

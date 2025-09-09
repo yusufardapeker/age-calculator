@@ -16,4 +16,92 @@ $fw-xl: 800;
 body {
 	font-family: "Poppins", sans-serif;
 	font-weight: $fw-l;
+	background-color: $off-white;
+	color: $off-black;
+}
+
+.container {
+	width: 780px;
+	max-width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.age-calculator {
+	margin-top: 88px;
+	background-color: $white;
+	padding: 48px 24px;
+	border-radius: 20px 20px 104px 20px;
+
+	form {
+		.inputs-wrapper {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 2px solid $off-white;
+			padding-bottom: 56px;
+
+			.input-wrapper {
+				display: flex;
+				flex-direction: column;
+				width: 88px;
+
+				label {
+					color: $smokey-grey;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+					font-size: 12px;
+					margin-bottom: 4px;
+				}
+
+				input {
+					border: 2px solid $off-white;
+					padding: 8px 12px;
+					border-radius: 8px;
+					font-size: 20px;
+					caret-color: $purple;
+
+					&::placeholder {
+						color: $smokey-grey;
+					}
+
+					&:focus {
+						border-color: $purple;
+					}
+				}
+
+				.error-message {
+					color: $light-red;
+					font-size: 14px;
+					font-weight: $fw-m;
+					font-style: italic;
+					margin-top: 4px;
+				}
+			}
+		}
+
+		.arrow-icon {
+			padding: 16px;
+			border-radius: 50%;
+			background-color: $purple;
+			width: 60px;
+			margin-top: -32px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.results {
+		margin-top: 28px;
+
+		.result {
+			font-weight: $fw-xl;
+			font-style: italic;
+			font-size: 48px;
+			line-height: 1.1;
+
+			.value {
+				color: $purple;
+			}
+		}
+	}
 }

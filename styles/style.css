@@ -1,4 +1,82 @@
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
+  background-color: hsl(0, 0%, 94%);
+  color: hsl(0, 0%, 8%);
+}
+
+.container {
+  width: 780px;
+  max-width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.age-calculator {
+  margin-top: 88px;
+  background-color: hsl(0, 0%, 100%);
+  padding: 48px 24px;
+  border-radius: 20px 20px 104px 20px;
+}
+.age-calculator form .inputs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid hsl(0, 0%, 94%);
+  padding-bottom: 56px;
+}
+.age-calculator form .inputs-wrapper .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 88px;
+}
+.age-calculator form .inputs-wrapper .input-wrapper label {
+  color: hsl(0, 1%, 44%);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.age-calculator form .inputs-wrapper .input-wrapper input {
+  border: 2px solid hsl(0, 0%, 94%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 20px;
+  caret-color: hsl(259, 100%, 65%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper input::-moz-placeholder {
+  color: hsl(0, 1%, 44%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper input::placeholder {
+  color: hsl(0, 1%, 44%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper input:focus {
+  border-color: hsl(259, 100%, 65%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper .error-message {
+  color: hsl(0, 100%, 67%);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 4px;
+}
+.age-calculator form .arrow-icon {
+  padding: 16px;
+  border-radius: 50%;
+  background-color: hsl(259, 100%, 65%);
+  width: 60px;
+  margin-top: -32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.age-calculator .results {
+  margin-top: 28px;
+}
+.age-calculator .results .result {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1.1;
+}
+.age-calculator .results .result .value {
+  color: hsl(259, 100%, 65%);
 }/*# sourceMappingURL=style.css.map */
