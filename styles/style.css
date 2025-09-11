@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  width: 780px;
+  width: 760px;
   max-width: 92%;
   margin-left: auto;
   margin-right: auto;
@@ -52,6 +52,10 @@ body {
 .age-calculator form .inputs-wrapper .input-wrapper input:focus {
   border-color: hsl(259, 100%, 65%);
 }
+.age-calculator form .inputs-wrapper .input-wrapper input::-webkit-outer-spin-button, .age-calculator form .inputs-wrapper .input-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
 .age-calculator form .inputs-wrapper .input-wrapper.error label {
   color: hsl(0, 100%, 67%);
 }
@@ -73,6 +77,10 @@ body {
   margin-top: -32px;
   margin-left: auto;
   margin-right: auto;
+  transition: background-color 300ms ease;
+}
+.age-calculator form .arrow-icon:hover {
+  background-color: hsl(0, 0%, 8%);
 }
 .age-calculator .results {
   margin-top: 28px;
@@ -85,4 +93,42 @@ body {
 }
 .age-calculator .results .result .value {
   color: hsl(259, 100%, 65%);
+}
+
+@media (width > 376px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .age-calculator {
+    margin-top: unset;
+    padding: 48px;
+    border-radius: 20px 20px 200px 20px;
+  }
+  .age-calculator form .inputs-wrapper {
+    justify-content: flex-start;
+    gap: 24px;
+  }
+  .age-calculator form .inputs-wrapper .input-wrapper {
+    width: 160px;
+  }
+  .age-calculator form .inputs-wrapper .input-wrapper label {
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .age-calculator form .inputs-wrapper .input-wrapper input {
+    font-size: 26px;
+    cursor: pointer;
+  }
+  .age-calculator form .arrow-icon {
+    padding: 20px;
+    width: 84px;
+    margin-right: unset;
+    cursor: pointer;
+  }
+  .age-calculator .results .result {
+    font-size: 68px;
+  }
 }/*# sourceMappingURL=style.css.map */

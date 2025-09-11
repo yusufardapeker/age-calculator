@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-	width: 780px;
+	width: 760px;
 	max-width: 92%;
 	margin-left: auto;
 	margin-right: auto;
@@ -67,6 +67,11 @@ body {
 					&:focus {
 						border-color: $purple;
 					}
+
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button {
+						appearance: none;
+					}
 				}
 
 				&.error {
@@ -97,6 +102,11 @@ body {
 			margin-top: -32px;
 			margin-left: auto;
 			margin-right: auto;
+			transition: background-color 300ms ease;
+
+			&:hover {
+				background-color: $off-black;
+			}
 		}
 	}
 
@@ -111,6 +121,55 @@ body {
 
 			.value {
 				color: $purple;
+			}
+		}
+	}
+}
+
+@media (width > 376px) {
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+	.age-calculator {
+		margin-top: unset;
+		padding: 48px;
+		border-radius: 20px 20px 200px 20px;
+
+		form {
+			.inputs-wrapper {
+				justify-content: flex-start;
+				gap: 24px;
+
+				.input-wrapper {
+					width: 160px;
+
+					label {
+						font-size: 14px;
+						cursor: pointer;
+					}
+
+					input {
+						font-size: 26px;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.arrow-icon {
+				padding: 20px;
+				width: 84px;
+				margin-right: unset;
+				cursor: pointer;
+			}
+		}
+
+		.results {
+			.result {
+				font-size: 68px;
 			}
 		}
 	}
