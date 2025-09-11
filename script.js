@@ -9,7 +9,7 @@ let dayInputValue = 0;
 let monthInputValue = 0;
 let yearInputValue = 0;
 
-let isInputValuesValid = false;
+let hasInputError = null;
 
 dayInput.addEventListener("input", (e) => {
 	dayInputValue = e.target.value;
@@ -63,13 +63,16 @@ const isValidDate = (day, month, year) => {
 const setError = (wrapper, msgEl, message = "") => {
 	wrapper.classList.add("error");
 	msgEl.textContent = message;
-	isInputValuesValid = false;
 };
 
 const clearError = (wrapper, msgEl) => {
 	wrapper.classList.remove("error");
 	msgEl.textContent = "";
-	isInputValuesValid = true;
+};
+
+const checkInputValues = () => {
+	const wrapperElements = document.querySelectorAll(".input-wrapper");
+	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
 };
 
 const validation = () => {
@@ -111,8 +114,9 @@ const validation = () => {
 
 arrowIcon.addEventListener("click", () => {
 	validation();
+	checkInputValues();
 
-	if (isInputValuesValid) {
+	if (!hasInputError) {
 		const { years, months, days } = calculateAge(
 			`${yearInputValue}-${monthInputValue}-${dayInputValue}`
 		);
