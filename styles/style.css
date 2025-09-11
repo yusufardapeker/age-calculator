@@ -52,6 +52,12 @@ body {
 .age-calculator form .inputs-wrapper .input-wrapper input:focus {
   border-color: hsl(259, 100%, 65%);
 }
+.age-calculator form .inputs-wrapper .input-wrapper.error label {
+  color: hsl(0, 100%, 67%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper.error input {
+  border-color: hsl(0, 100%, 67%);
+}
 .age-calculator form .inputs-wrapper .input-wrapper .error-message {
   color: hsl(0, 100%, 67%);
   font-size: 14px;
