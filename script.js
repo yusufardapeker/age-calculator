@@ -4,6 +4,9 @@ const [yearResultEl, monthResultEl, dayResultEl] = document.querySelectorAll(".r
 const [dayErrorMsgEl, monthErrorMsgEl, yearErrorMsgEl] =
 	document.querySelectorAll(".error-message");
 const [dayWrapper, monthWrapper, yearWrapper] = document.querySelectorAll(".input-wrapper");
+const results = document.querySelectorAll(".result");
+const birthdayMessageEl = document.querySelector(".birthday-message");
+const yearsOldValueEl = document.querySelector(".years-old-value");
 
 let dayInputValue = 0;
 let monthInputValue = 0;
@@ -127,12 +130,24 @@ arrowIcon.addEventListener("click", () => {
 			setError(yearWrapper, yearErrorMsgEl);
 			displayResults("--", "--", "--");
 		} else {
+			if (days == 0 && months === 0) {
+				results.forEach((result) => (result.style.display = "none"));
+				birthdayMessageEl.style.display = "block";
+				yearsOldValueEl.textContent = years;
+			} else {
+				results.forEach((result) => (result.style.display = "block"));
+				birthdayMessageEl.style.display = "none";
+			}
+
 			clearError(dayWrapper, dayErrorMsgEl);
 			clearError(monthWrapper, monthErrorMsgEl);
 			clearError(yearWrapper, yearErrorMsgEl);
 			displayResults(years, months, days);
 		}
 	} else {
+		results.forEach((result) => (result.style.display = "block"));
+		birthdayMessageEl.style.display = "none";
+
 		displayResults("--", "--", "--");
 	}
 });

@@ -85,6 +85,21 @@ body {
 .age-calculator .results {
   margin-top: 28px;
 }
+.age-calculator .results .birthday-message {
+  display: none;
+  font-size: 26px;
+  color: hsl(259, 100%, 65%);
+  text-wrap: balance;
+  animation: birthdayTextAnimation 1200ms ease 1;
+  width: 17ch;
+}
+.age-calculator .results .birthday-message .years-old-sentence {
+  color: hsl(0, 0%, 8%);
+}
+.age-calculator .results .birthday-message .years-old-sentence .years-old-value {
+  margin-inline: 4px;
+  color: hsl(259, 100%, 65%);
+}
 .age-calculator .results .result {
   font-weight: 800;
   font-style: italic;
@@ -95,6 +110,26 @@ body {
   color: hsl(259, 100%, 65%);
 }
 
+@keyframes birthdayTextAnimation {
+  0% {
+    transform: rotate(0deg) scale(0.5);
+  }
+  20% {
+    transform: rotate(10deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
 @media (width > 376px) {
   body {
     display: flex;
@@ -127,6 +162,9 @@ body {
     width: 84px;
     margin-right: unset;
     cursor: pointer;
+  }
+  .age-calculator .results .birthday-message {
+    font-size: 40px;
   }
   .age-calculator .results .result {
     font-size: 68px;

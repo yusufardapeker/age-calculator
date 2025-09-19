@@ -113,6 +113,24 @@ body {
 	.results {
 		margin-top: 28px;
 
+		.birthday-message {
+			display: none;
+			font-size: 26px;
+			color: $purple;
+			text-wrap: balance;
+			animation: birthdayTextAnimation 1200ms ease 1;
+			width: 17ch;
+
+			.years-old-sentence {
+				color: $off-black;
+
+				.years-old-value {
+					margin-inline: 4px;
+					color: $purple;
+				}
+			}
+		}
+
 		.result {
 			font-weight: $fw-xl;
 			font-style: italic;
@@ -123,6 +141,32 @@ body {
 				color: $purple;
 			}
 		}
+	}
+}
+
+@keyframes birthdayTextAnimation {
+	0% {
+		transform: rotate(0deg) scale(0.5);
+	}
+
+	20% {
+		transform: rotate(10deg);
+	}
+
+	40% {
+		transform: rotate(-10deg);
+	}
+
+	60% {
+		transform: rotate(5deg);
+	}
+
+	80% {
+		transform: rotate(-5deg);
+	}
+
+	100% {
+		transform: rotate(0deg) scale(1);
 	}
 }
 
@@ -168,6 +212,10 @@ body {
 		}
 
 		.results {
+			.birthday-message {
+				font-size: 40px;
+			}
+
 			.result {
 				font-size: 68px;
 			}
