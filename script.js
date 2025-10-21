@@ -73,6 +73,12 @@ const clearError = (wrapper, msgEl) => {
 	msgEl.textContent = "";
 };
 
+const setBirthday = (years) => {
+	results.forEach((result) => (result.style.display = "none"));
+	birthdayMessageEl.style.display = "block";
+	yearsOldValueEl.textContent = years;
+};
+
 const checkInputValues = () => {
 	const wrapperElements = document.querySelectorAll(".input-wrapper");
 	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
@@ -130,13 +136,13 @@ arrowIcon.addEventListener("click", () => {
 			setError(yearWrapper, yearErrorMsgEl);
 			displayResults("--", "--", "--");
 		} else {
-			if (days == 0 && months === 0) {
-				results.forEach((result) => (result.style.display = "none"));
-				birthdayMessageEl.style.display = "block";
-				yearsOldValueEl.textContent = years;
+			const isBirthday = days === 0 && months === 0;
+
+			if (isBirthday) {
+				setBirthday(years);
 			} else {
-				results.forEach((result) => (result.style.display = "block"));
 				birthdayMessageEl.style.display = "none";
+				results.forEach((result) => (result.style.display = "block"));
 			}
 
 			clearError(dayWrapper, dayErrorMsgEl);
@@ -145,8 +151,8 @@ arrowIcon.addEventListener("click", () => {
 			displayResults(years, months, days);
 		}
 	} else {
-		results.forEach((result) => (result.style.display = "block"));
 		birthdayMessageEl.style.display = "none";
+		results.forEach((result) => (result.style.display = "block"));
 
 		displayResults("--", "--", "--");
 	}
