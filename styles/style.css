@@ -141,6 +141,7 @@ body {
     margin-top: unset;
     padding: 48px;
     border-radius: 20px 20px 200px 20px;
+    min-height: 548px;
   }
   .age-calculator form .inputs-wrapper {
     justify-content: flex-start;
@@ -164,7 +165,7 @@ body {
     cursor: pointer;
   }
   .age-calculator .results .birthday-message {
-    font-size: 40px;
+    font-size: 44px;
   }
   .age-calculator .results .result {
     font-size: 68px;
