@@ -3,7 +3,9 @@ const arrowIcon = document.querySelector(".arrow-icon");
 const [yearResultEl, monthResultEl, dayResultEl] = document.querySelectorAll(".result .value");
 const [dayErrorMsgEl, monthErrorMsgEl, yearErrorMsgEl] =
 	document.querySelectorAll(".error-message");
-const [dayWrapper, monthWrapper, yearWrapper] = document.querySelectorAll(".input-wrapper");
+const wrapperElements = document.querySelectorAll(".input-wrapper");
+
+const [dayWrapper, monthWrapper, yearWrapper] = wrapperElements;
 const results = document.querySelectorAll(".result");
 const birthdayMessageEl = document.querySelector(".birthday-message");
 const yearsOldValueEl = document.querySelector(".years-old-value");
@@ -73,15 +75,19 @@ const clearError = (wrapper, msgEl) => {
 	msgEl.textContent = "";
 };
 
+const setValidDateError = () => {
+	wrapperElements.forEach((element) => element.classList.add("error"));
+	dayErrorMsgEl.textContent = "Must be a valid date";
+};
+
+const clearValidDateError = () => {
+	wrapperElements.forEach((element) => element.classList.remove("error"));
+};
+
 const setBirthday = (years) => {
 	results.forEach((result) => (result.style.display = "none"));
 	birthdayMessageEl.style.display = "block";
 	yearsOldValueEl.textContent = years;
-};
-
-const checkInputValues = () => {
-	const wrapperElements = document.querySelectorAll(".input-wrapper");
-	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
 };
 
 const validation = () => {
@@ -123,37 +129,36 @@ const validation = () => {
 
 arrowIcon.addEventListener("click", () => {
 	validation();
-	checkInputValues();
 
-	if (!hasInputError) {
-		const { years, months, days } = calculateAge(
-			`${yearInputValue}-${monthInputValue}-${dayInputValue}`
-		);
+	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
 
-		if (!isValidDate(dayInputValue, monthInputValue, yearInputValue)) {
-			setError(dayWrapper, dayErrorMsgEl, "Must be a valid date");
-			setError(monthWrapper, monthErrorMsgEl);
-			setError(yearWrapper, yearErrorMsgEl);
-			displayResults("--", "--", "--");
-		} else {
-			const isBirthday = days === 0 && months === 0;
-
-			if (isBirthday) {
-				setBirthday(years);
-			} else {
-				birthdayMessageEl.style.display = "none";
-				results.forEach((result) => (result.style.display = "block"));
-			}
-
-			clearError(dayWrapper, dayErrorMsgEl);
-			clearError(monthWrapper, monthErrorMsgEl);
-			clearError(yearWrapper, yearErrorMsgEl);
-			displayResults(years, months, days);
-		}
-	} else {
+	if (hasInputError) {
 		birthdayMessageEl.style.display = "none";
 		results.forEach((result) => (result.style.display = "block"));
 
 		displayResults("--", "--", "--");
+
+		return;
+	}
+
+	const { years, months, days } = calculateAge(
+		`${yearInputValue}-${monthInputValue}-${dayInputValue}`
+	);
+
+	if (!isValidDate(dayInputValue, monthInputValue, yearInputValue)) {
+		setValidDateError();
+		displayResults("--", "--", "--");
+	} else {
+		const isBirthday = days === 0 && months === 0;
+
+		if (isBirthday) {
+			setBirthday(years);
+		} else {
+			birthdayMessageEl.style.display = "none";
+			results.forEach((result) => (result.style.display = "block"));
+		}
+
+		clearValidDateError();
+		displayResults(years, months, days);
 	}
 });
