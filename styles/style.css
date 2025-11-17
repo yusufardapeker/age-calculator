@@ -112,13 +112,13 @@ body {
   margin-inline: 4px;
   color: hsl(259, 100%, 65%);
 }
-.age-calculator .results .result {
+.age-calculator .results .date-result {
   font-weight: 800;
   font-style: italic;
   font-size: 48px;
   line-height: 1.1;
 }
-.age-calculator .results .result .value {
+.age-calculator .results .date-result .value {
   color: hsl(259, 100%, 65%);
 }
 
@@ -179,7 +179,7 @@ body {
   .age-calculator .results .birthday-message {
     font-size: 44px;
   }
-  .age-calculator .results .result {
+  .age-calculator .results .date-result {
     font-size: 68px;
   }
 }/*# sourceMappingURL=style.css.map */

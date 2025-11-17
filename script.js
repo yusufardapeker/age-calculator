@@ -1,12 +1,12 @@
 const [dayInput, monthInput, yearInput] = document.querySelectorAll(".input-wrapper input");
 const arrowIcon = document.querySelector(".arrow-icon");
-const [yearResultEl, monthResultEl, dayResultEl] = document.querySelectorAll(".result .value");
+const [yearResultEl, monthResultEl, dayResultEl] = document.querySelectorAll(".date-result .value");
 const [dayErrorMsgEl, monthErrorMsgEl, yearErrorMsgEl] =
 	document.querySelectorAll(".error-message");
-const wrapperElements = document.querySelectorAll(".input-wrapper");
+const inputWrapperElements = document.querySelectorAll(".input-wrapper");
 
-const [dayWrapper, monthWrapper, yearWrapper] = wrapperElements;
-const results = document.querySelectorAll(".result");
+const [dayWrapper, monthWrapper, yearWrapper] = inputWrapperElements;
+const resultElements = document.querySelectorAll(".date-result");
 const birthdayMessageEl = document.querySelector(".birthday-message");
 const yearsOldValueEl = document.querySelector(".years-old-value");
 
@@ -76,16 +76,16 @@ const clearError = (wrapper, msgEl) => {
 };
 
 const setValidDateError = () => {
-	wrapperElements.forEach((element) => element.classList.add("error"));
+	inputWrapperElements.forEach((element) => element.classList.add("error"));
 	dayErrorMsgEl.textContent = "Must be a valid date";
 };
 
 const clearValidDateError = () => {
-	wrapperElements.forEach((element) => element.classList.remove("error"));
+	inputWrapperElements.forEach((element) => element.classList.remove("error"));
 };
 
 const setBirthday = (years) => {
-	results.forEach((result) => result.classList.add("hide"));
+	resultElements.forEach((result) => result.classList.add("hide"));
 	birthdayMessageEl.classList.add("show");
 	yearsOldValueEl.textContent = years;
 };
@@ -130,11 +130,11 @@ const validation = () => {
 arrowIcon.addEventListener("click", () => {
 	validation();
 
-	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
+	hasInputError = [...inputWrapperElements].some((element) => element.classList.contains("error"));
 
 	if (hasInputError) {
 		birthdayMessageEl.classList.remove("show");
-		results.forEach((result) => result.classList.remove("hide"));
+		resultElements.forEach((result) => result.classList.remove("hide"));
 
 		displayResults("--", "--", "--");
 
@@ -155,7 +155,7 @@ arrowIcon.addEventListener("click", () => {
 			setBirthday(years);
 		} else {
 			birthdayMessageEl.classList.remove("show");
-			results.forEach((result) => result.classList.remove("hide"));
+			resultElements.forEach((result) => result.classList.remove("hide"));
 		}
 
 		clearValidDateError();
