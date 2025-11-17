@@ -85,8 +85,8 @@ const clearValidDateError = () => {
 };
 
 const setBirthday = (years) => {
-	results.forEach((result) => (result.style.display = "none"));
-	birthdayMessageEl.style.display = "block";
+	results.forEach((result) => result.classList.add("hide"));
+	birthdayMessageEl.classList.add("show");
 	yearsOldValueEl.textContent = years;
 };
 
@@ -133,8 +133,8 @@ arrowIcon.addEventListener("click", () => {
 	hasInputError = [...wrapperElements].some((element) => element.classList.contains("error"));
 
 	if (hasInputError) {
-		birthdayMessageEl.style.display = "none";
-		results.forEach((result) => (result.style.display = "block"));
+		birthdayMessageEl.classList.remove("show");
+		results.forEach((result) => result.classList.remove("hide"));
 
 		displayResults("--", "--", "--");
 
@@ -154,8 +154,8 @@ arrowIcon.addEventListener("click", () => {
 		if (isBirthday) {
 			setBirthday(years);
 		} else {
-			birthdayMessageEl.style.display = "none";
-			results.forEach((result) => (result.style.display = "block"));
+			birthdayMessageEl.classList.remove("show");
+			results.forEach((result) => result.classList.remove("hide"));
 		}
 
 		clearValidDateError();

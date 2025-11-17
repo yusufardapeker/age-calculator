@@ -27,6 +27,14 @@ body {
 	margin-right: auto;
 }
 
+.show {
+	display: block !important;
+}
+
+.hide {
+	display: none !important;
+}
+
 .age-calculator {
 	margin-top: 88px;
 	background-color: $white;
@@ -74,6 +82,15 @@ body {
 					}
 				}
 
+				.error-message {
+					color: $light-red;
+					font-size: 14px;
+					font-weight: $fw-m;
+					font-style: italic;
+					margin-top: 4px;
+					display: none;
+				}
+
 				&.error {
 					label {
 						color: $light-red;
@@ -82,14 +99,10 @@ body {
 					input {
 						border-color: $light-red;
 					}
-				}
 
-				.error-message {
-					color: $light-red;
-					font-size: 14px;
-					font-weight: $fw-m;
-					font-style: italic;
-					margin-top: 4px;
+					.error-message {
+						display: block;
+					}
 				}
 			}
 		}

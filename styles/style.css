@@ -12,6 +12,14 @@ body {
   margin-right: auto;
 }
 
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
 .age-calculator {
   margin-top: 88px;
   background-color: hsl(0, 0%, 100%);
@@ -56,18 +64,22 @@ body {
   -webkit-appearance: none;
           appearance: none;
 }
-.age-calculator form .inputs-wrapper .input-wrapper.error label {
-  color: hsl(0, 100%, 67%);
-}
-.age-calculator form .inputs-wrapper .input-wrapper.error input {
-  border-color: hsl(0, 100%, 67%);
-}
 .age-calculator form .inputs-wrapper .input-wrapper .error-message {
   color: hsl(0, 100%, 67%);
   font-size: 14px;
   font-weight: 400;
   font-style: italic;
   margin-top: 4px;
+  display: none;
+}
+.age-calculator form .inputs-wrapper .input-wrapper.error label {
+  color: hsl(0, 100%, 67%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper.error input {
+  border-color: hsl(0, 100%, 67%);
+}
+.age-calculator form .inputs-wrapper .input-wrapper.error .error-message {
+  display: block;
 }
 .age-calculator form .arrow-icon {
   padding: 16px;
