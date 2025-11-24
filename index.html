@@ -20,37 +20,41 @@
 					<div class="inputs-wrapper">
 						<div class="input-wrapper">
 							<label for="day">Day</label>
-							<input name="day" id="day" type="number" placeholder="DD" />
-							<p class="error-message"></p>
+							<input name="day" id="day" type="number" placeholder="DD" required />
+							<p class="error-message" aria-live="assertive"></p>
 						</div>
 
 						<div class="input-wrapper">
 							<label for="month">Month</label>
-							<input name="month" id="month" type="number" placeholder="MM" />
-							<p class="error-message"></p>
+							<input name="month" id="month" type="number" placeholder="MM" required />
+							<p class="error-message" aria-live="assertive"></p>
 						</div>
 
 						<div class="input-wrapper">
 							<label for="year">Year</label>
-							<input name="year" id="year" type="number" placeholder="YYYY" />
-							<p class="error-message"></p>
+							<input name="year" id="year" type="number" placeholder="YYYY" required />
+							<p class="error-message" aria-live="assertive"></p>
 						</div>
 					</div>
 
-					<img src="./images/icon-arrow.svg" alt="arrow icon" class="arrow-icon" />
+					<button class="calculate-age-button" aria-label="Calculate age">
+						<img src="./images/icon-arrow.svg" class="arrow-icon" alt="" />
+					</button>
 				</form>
 
 				<div class="results">
-					<p class="birthday-message">
+					<p class="birthday-message" role="status" aria-atomic="true">
 						Happy Birthday!
 						<span class="years-old-sentence"
 							>You are <span class="years-old-value"></span> years old</span
 						>
 					</p>
 
-					<p class="date-result"><span class="value">-- </span> years</p>
-					<p class="date-result"><span class="value">-- </span> months</p>
-					<p class="date-result"><span class="value">-- </span> days</p>
+					<div class="date-results-wrapper" role="status" aria-atomic="true">
+						<p class="date-result"><span class="value">-- </span> years</p>
+						<p class="date-result"><span class="value">-- </span> months</p>
+						<p class="date-result"><span class="value">-- </span> days</p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -13,6 +13,10 @@ $fw-m: 400;
 $fw-l: 700;
 $fw-xl: 800;
 
+html {
+	font-size: 62.5%;
+}
+
 body {
 	font-family: "Poppins", sans-serif;
 	font-weight: $fw-l;
@@ -57,7 +61,7 @@ body {
 					color: $smokey-grey;
 					text-transform: uppercase;
 					letter-spacing: 2px;
-					font-size: 12px;
+					font-size: 1.2rem;
 					margin-bottom: 4px;
 				}
 
@@ -65,7 +69,7 @@ body {
 					border: 2px solid $off-white;
 					padding: 8px 12px;
 					border-radius: 8px;
-					font-size: 20px;
+					font-size: 2rem;
 					caret-color: $purple;
 
 					&::placeholder {
@@ -84,7 +88,7 @@ body {
 
 				.error-message {
 					color: $light-red;
-					font-size: 14px;
+					font-size: 1.4rem;
 					font-weight: $fw-m;
 					font-style: italic;
 					margin-top: 4px;
@@ -107,18 +111,23 @@ body {
 			}
 		}
 
-		.arrow-icon {
+		.calculate-age-button {
+			display: block;
 			padding: 16px;
 			border-radius: 50%;
 			background-color: $purple;
 			width: 60px;
-			margin-top: -32px;
+			margin-top: -44px;
 			margin-left: auto;
 			margin-right: auto;
 			transition: background-color 300ms ease;
 
 			&:hover {
 				background-color: $off-black;
+			}
+
+			&:focus {
+				outline: 3px solid $off-black;
 			}
 		}
 	}
@@ -128,7 +137,7 @@ body {
 
 		.birthday-message {
 			display: none;
-			font-size: 26px;
+			font-size: 2.6rem;
 			color: $purple;
 			text-wrap: balance;
 			animation: birthdayTextAnimation 1200ms ease 1;
@@ -144,14 +153,16 @@ body {
 			}
 		}
 
-		.date-result {
+		.date-results-wrapper {
 			font-weight: $fw-xl;
 			font-style: italic;
-			font-size: 48px;
+			font-size: 4.8rem;
 			line-height: 1.1;
 
-			.value {
-				color: $purple;
+			.date-result {
+				.value {
+					color: $purple;
+				}
 			}
 		}
 	}
@@ -183,6 +194,12 @@ body {
 	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	.birthday-message {
+		animation: none !important;
+	}
+}
+
 @media (width > 376px) {
 	body {
 		display: flex;
@@ -206,32 +223,33 @@ body {
 					width: 160px;
 
 					label {
-						font-size: 14px;
+						font-size: 1.4rem;
 						cursor: pointer;
 					}
 
 					input {
-						font-size: 26px;
+						font-size: 2.6rem;
 						cursor: pointer;
 					}
 				}
 			}
 
-			.arrow-icon {
+			.calculate-age-button {
 				padding: 20px;
 				width: 84px;
 				margin-right: unset;
-				cursor: pointer;
 			}
 		}
 
 		.results {
 			.birthday-message {
-				font-size: 44px;
+				font-size: 4.4rem;
 			}
 
-			.date-result {
-				font-size: 68px;
+			.date-results-wrapper {
+				.date-result {
+					font-size: 6.8rem;
+				}
 			}
 		}
 	}

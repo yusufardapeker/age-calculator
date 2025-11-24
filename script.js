@@ -1,5 +1,5 @@
 const [dayInput, monthInput, yearInput] = document.querySelectorAll(".input-wrapper input");
-const arrowIcon = document.querySelector(".arrow-icon");
+const calculateAgeButton = document.querySelector(".calculate-age-button");
 const [yearResultEl, monthResultEl, dayResultEl] = document.querySelectorAll(".date-result .value");
 const [dayErrorMsgEl, monthErrorMsgEl, yearErrorMsgEl] =
 	document.querySelectorAll(".error-message");
@@ -127,7 +127,9 @@ const validation = () => {
 	}
 };
 
-arrowIcon.addEventListener("click", () => {
+calculateAgeButton.addEventListener("click", (e) => {
+	e.preventDefault();
+
 	validation();
 
 	hasInputError = [...inputWrapperElements].some((element) => element.classList.contains("error"));
