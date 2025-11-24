@@ -8,7 +8,6 @@ const inputWrapperElements = document.querySelectorAll(".input-wrapper");
 const [dayWrapper, monthWrapper, yearWrapper] = inputWrapperElements;
 const resultElements = document.querySelectorAll(".date-result");
 const birthdayMessageEl = document.querySelector(".birthday-message");
-const yearsOldValueEl = document.querySelector(".years-old-value");
 
 let dayInputValue = 0;
 let monthInputValue = 0;
@@ -60,19 +59,25 @@ const displayResults = (years, months, days) => {
 	dayResultEl.textContent = days;
 };
 
+const resetResults = () => {
+	yearResultEl.textContent = "--";
+	monthResultEl.textContent = "--";
+	dayResultEl.textContent = "--";
+};
+
 const isValidDate = (day, month, year) => {
 	const date = new Date(year, month - 1, day);
 	return date.getFullYear() === +year && date.getMonth() === month - 1 && date.getDate() === +day;
 };
 
-const setError = (wrapper, msgEl, message = "") => {
+const setError = (wrapper, errorMsgEl, errorMessage = "") => {
 	wrapper.classList.add("error");
-	msgEl.textContent = message;
+	errorMsgEl.textContent = errorMessage;
 };
 
-const clearError = (wrapper, msgEl) => {
+const clearError = (wrapper, errorMsgEl) => {
 	wrapper.classList.remove("error");
-	msgEl.textContent = "";
+	errorMsgEl.textContent = "";
 };
 
 const setValidDateError = () => {
@@ -85,6 +90,8 @@ const clearValidDateError = () => {
 };
 
 const setBirthday = (years) => {
+	const yearsOldValueEl = document.querySelector(".years-old-value");
+
 	resultElements.forEach((result) => result.classList.add("hide"));
 	birthdayMessageEl.classList.add("show");
 	yearsOldValueEl.textContent = years;
@@ -97,7 +104,6 @@ const validation = () => {
 
 	const currentYear = new Date().getFullYear();
 
-	// Day check
 	if (!dayInput.value) {
 		setError(dayWrapper, dayErrorMsgEl, "This field is required");
 	} else if (day < 1 || day > 31) {
@@ -106,7 +112,6 @@ const validation = () => {
 		clearError(dayWrapper, dayErrorMsgEl);
 	}
 
-	// Month check
 	if (!monthInput.value) {
 		setError(monthWrapper, monthErrorMsgEl, "This field is required");
 	} else if (month < 1 || month > 12) {
@@ -115,7 +120,6 @@ const validation = () => {
 		clearError(monthWrapper, monthErrorMsgEl);
 	}
 
-	// Year check
 	if (!yearInput.value) {
 		setError(yearWrapper, yearErrorMsgEl, "This field is required");
 	} else if (yearInput.value.length !== 4 || year <= 0) {
@@ -138,7 +142,7 @@ calculateAgeButton.addEventListener("click", (e) => {
 		birthdayMessageEl.classList.remove("show");
 		resultElements.forEach((result) => result.classList.remove("hide"));
 
-		displayResults("--", "--", "--");
+		resetResults();
 
 		return;
 	}
@@ -149,7 +153,7 @@ calculateAgeButton.addEventListener("click", (e) => {
 
 	if (!isValidDate(dayInputValue, monthInputValue, yearInputValue)) {
 		setValidDateError();
-		displayResults("--", "--", "--");
+		resetResults();
 	} else {
 		const isBirthday = days === 0 && months === 0;
 
