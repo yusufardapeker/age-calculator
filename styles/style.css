@@ -91,7 +91,7 @@ body {
   border-radius: 50%;
   background-color: hsl(259, 100%, 65%);
   width: 60px;
-  margin-top: -44px;
+  margin-top: -30px;
   margin-left: auto;
   margin-right: auto;
   transition: background-color 300ms ease;
@@ -186,6 +186,7 @@ body {
   .age-calculator form .calculate-age-button {
     padding: 20px;
     width: 84px;
+    margin-top: -42px;
     margin-right: unset;
   }
   .age-calculator .results .birthday-message {
