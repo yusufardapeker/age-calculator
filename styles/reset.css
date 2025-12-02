@@ -30,10 +30,12 @@ svg {
 }
 
 button {
-	cursor: pointer;
 	background-color: transparent;
-	font: inherit;
-	color: inherit;
+	border: none;
+}
+
+label {
+	cursor: pointer;
 }
 
 input,
@@ -41,4 +43,6 @@ button,
 textarea,
 select {
 	font: inherit;
+	color: inherit;
+	cursor: pointer;
 }
