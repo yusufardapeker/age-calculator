@@ -1,27 +1,47 @@
-# Frontend Mentor - Calculator app solution
+# Frontend Mentor – Age Calculator App Solution
 
-### Links
+This is my solution to the **Age Calculator App** challenge on [Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q).  
+The project calculates a user's exact age in years, months, and days based on the date they provide.
 
-This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q).
+### 🔗 Live Demo
 
-Live Site URL: [The Website](https://age-calculator50.netlify.app/)
+👉 **[Go Live Site](https://age-calculator50.netlify.app/)** <br>
+👉 **[Visit Challenge](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q)**
 
-### Built with
+## 🛠️ Built With
 
-- SASS
-- Mobile-first workflow
+- **HTML5**
+- **SASS (SCSS)**
+- **JavaScript**
+- **Mobile-first workflow**
 
-### About The Project
+## 📌 About the Project
 
-I don't have the figma file so it is not pixel perfect. I have tried to make similar as same as possible. The website is responsive only 1440px and 375px screen sizes. I'll be glad if you give me suggestion about mistakes, lackings and best practices and how can I fix it.
+Since I didn’t have the original design files, the layout is **not pixel-perfect**, but the implementation focuses on:
 
-### How to get this repository to your local computer?
+- Clean and modern CSS
+- Good accessibility practices
+- Form handling
+- Smooth responsive behavior
+- Keyboard-friendly interactions
 
-- Open your code editor
-- Open terminal and paste that code below
+## 🚀 Installation
 
-- `git clone https://github.com/yusufardapeker/age-calculator.git`
+```sh
+git clone https://github.com/yusufardapeker/age-calculator.git
+cd age-calculator
+```
 
-- Paste this code to navigate into the project `cd age-calculator`
+If you are using Visual Studio Code, you may enable:
 
-- Use _Live Server_ extension for running the site with your browser if you use Visual Studio Code.
+- Live Server → to preview the project
+
+- Live Sass Compiler (by Glenn Marks) → to compile style.scss
+
+## 📘 Usage
+
+1. Enter a valid day, month, and year into the input fields.
+
+2. Press Enter or click the round purple button.
+
+The calculated age will appear instantly.
