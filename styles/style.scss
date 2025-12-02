@@ -13,6 +13,8 @@ $fw-m: 400;
 $fw-l: 700;
 $fw-xl: 800;
 
+$calculate-age-button-size: clamp(6rem, 3.6rem + 3.6vw, 8.4rem);
+
 html {
 	font-size: 62.5%;
 }
@@ -22,11 +24,14 @@ body {
 	font-weight: $fw-l;
 	background-color: $off-white;
 	color: $off-black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 
 .container {
-	width: 760px;
-	max-width: 92%;
+	width: min(76rem, 92%);
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -40,37 +45,40 @@ body {
 }
 
 .age-calculator {
-	margin-top: 88px;
 	background-color: $white;
-	padding: 48px 24px;
+	padding: 4.8rem 2.4rem;
 	border-radius: 20px 20px 104px 20px;
+	min-height: clamp(34.5rem, 22.3rem + 22.3vw, 54.8rem);
 
 	form {
+		position: relative;
+
 		.inputs-wrapper {
 			display: flex;
-			justify-content: space-between;
+			gap: clamp(1.6rem, 1rem + 1vw, 2.4rem);
 			border-bottom: 2px solid $off-white;
-			padding-bottom: 56px;
+			padding-bottom: 5.6rem;
 
 			.input-wrapper {
 				display: flex;
 				flex-direction: column;
-				width: 88px;
+				width: clamp(8.8rem, 5.95rem + 5.95vw, 15rem);
 
 				label {
 					color: $smokey-grey;
 					text-transform: uppercase;
-					letter-spacing: 2px;
-					font-size: 1.2rem;
-					margin-bottom: 4px;
+					letter-spacing: 0.2rem;
+					font-size: clamp(1.2rem, 0.7rem + 0.7vw, 1.5rem);
+					margin-bottom: 0.4rem;
 				}
 
 				input {
 					border: 2px solid $off-white;
-					padding: 8px 12px;
+					padding: 0.8rem 1.2rem;
 					border-radius: 8px;
-					font-size: 2rem;
+					font-size: clamp(2rem, 1.25rem + 1.25vw, 3rem);
 					caret-color: $purple;
+					background-color: $white;
 
 					&::placeholder {
 						color: $smokey-grey;
@@ -88,10 +96,10 @@ body {
 
 				.error-message {
 					color: $light-red;
-					font-size: 1.4rem;
+					font-size: clamp(1.4rem, 0.8rem + 0.8vw, 1.8rem);
 					font-weight: $fw-m;
 					font-style: italic;
-					margin-top: 4px;
+					margin-top: 0.4rem;
 					display: none;
 				}
 
@@ -112,14 +120,15 @@ body {
 		}
 
 		.calculate-age-button {
-			display: block;
-			padding: 16px;
+			padding: clamp(1.6rem, 0.9rem + 0.9vw, 2rem);
 			border-radius: 50%;
 			background-color: $purple;
-			width: 60px;
-			margin-top: -30px;
-			margin-left: auto;
-			margin-right: auto;
+			width: $calculate-age-button-size;
+			height: $calculate-age-button-size;
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			translate: -50% -50%;
 			transition: background-color 300ms ease;
 
 			&:hover {
@@ -133,21 +142,20 @@ body {
 	}
 
 	.results {
-		margin-top: 28px;
+		margin-top: 5.6rem;
 
 		.birthday-message {
 			display: none;
-			font-size: 2.6rem;
+			font-size: clamp(2.6rem, 1.95rem + 1.95vw, 5.2rem);
 			color: $purple;
 			text-wrap: balance;
 			animation: birthdayTextAnimation 1200ms ease 1;
-			width: 17ch;
+			max-width: 17ch;
 
 			.years-old-sentence {
 				color: $off-black;
 
 				.years-old-value {
-					margin-inline: 4px;
 					color: $purple;
 				}
 			}
@@ -156,7 +164,7 @@ body {
 		.date-results-wrapper {
 			font-weight: $fw-xl;
 			font-style: italic;
-			font-size: 4.8rem;
+			font-size: clamp(4.8rem, 3.2rem + 3.2vw, 8rem);
 			line-height: 1.1;
 
 			.date-result {
@@ -195,61 +203,34 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.birthday-message {
+	* {
 		animation: none !important;
 	}
 }
 
-@media (width > 376px) {
-	body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-	}
-
+@media (width >= 376px) {
 	.age-calculator {
-		margin-top: unset;
-		padding: 48px;
+		form {
+			.calculate-age-button {
+				left: calc(100% - ($calculate-age-button-size / 2));
+			}
+		}
+	}
+}
+
+@media (width > 768px) {
+	.age-calculator {
+		padding: 4.8rem;
 		border-radius: 20px 20px 200px 20px;
-		min-height: 548px;
 
 		form {
 			.inputs-wrapper {
-				justify-content: flex-start;
-				gap: 24px;
+				padding-bottom: 4rem;
 
 				.input-wrapper {
-					width: 160px;
-
-					label {
-						font-size: 1.4rem;
-						cursor: pointer;
-					}
-
 					input {
-						font-size: 2.6rem;
-						cursor: pointer;
+						padding: 1.2rem 1.6rem;
 					}
-				}
-			}
-
-			.calculate-age-button {
-				padding: 20px;
-				width: 84px;
-				margin-top: -42px;
-				margin-right: unset;
-			}
-		}
-
-		.results {
-			.birthday-message {
-				font-size: 4.4rem;
-			}
-
-			.date-results-wrapper {
-				.date-result {
-					font-size: 6.8rem;
 				}
 			}
 		}
